@@ -21,7 +21,7 @@
     "typeorm": "typeorm-ts-node-commonjs",
     "migration:generate": "npm run build && npm run typeorm migration:generate -- -d typeorm.config.ts",
     "migration:run": "npm run build && npm run typeorm migration:run -- -d typeorm.config.ts",
-    "migration:run:prod": "typeorm migration:run -d dist/typeorm.config.js"
+    "migration:run:prod": "typeorm migration:generate -- -d typeorm.config.ts && typeorm migration:run -d dist/typeorm.config.js"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
