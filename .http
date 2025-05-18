@@ -1,0 +1,61 @@
+### Variables
+@baseurl = localhost:3000
+@contentType = application/json
+
+# Basic requests
+### get all tasks
+GET {{baseurl}}/tasks
+
+
+### get one task
+GET {{baseurl}}/tasks/{{taskId}}
+
+
+### create task
+POST {{baseurl}}/tasks
+Content-Type: {{contentType}}
+
+{
+    "title": "Learn NestJS",
+    "description": "Complete the NestJS course",
+    "status": "OPEN",
+    "userId": "0b549f7d-ee52-457d-9468-d812f5a55ab5",
+    "labels": [
+        {
+            "name": "urgent"
+        }
+    ]
+}
+
+### update task
+PATCH {{baseurl}}/tasks/{{taskId}}
+Content-Type: {{contentType}}
+
+{
+    "status": "PROGRESS"
+}
+
+
+### deleting task
+DELETE {{baseurl}}/tasks/{{taskId}}
+
+
+### Validation error
+POST {{baseurl}}/tasks
+Content-Type: {{contentType}}
+
+{
+    "title": "Learn NestJS",
+    "description": "Complete the NestJS course",
+    "status": "open"
+}
+
+
+### add labels
+POST {{baseurl}}/tasks/{{taskId}}
+Content-Type: {{contentType}}
+
+[
+    {"name": "urgent"},
+    {"name": "bug"},
+]
